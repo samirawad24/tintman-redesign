@@ -27,6 +27,10 @@ PRICES = dict(
 )
 
 
+import hashlib
+VER = hashlib.md5((ROOT / "assets/site.css").read_bytes() + (ROOT / "assets/site.js").read_bytes()).hexdigest()[:8]
+
+
 def icon(name):
     svg = (Path(__file__).parent / f"{name}.svg").read_text(encoding="utf-8")
     path = svg[svg.index("<path"):svg.index("</svg>")]
@@ -77,13 +81,13 @@ def page(fname, title, desc, body, scripts=""):
 <meta property="og:image" content="assets/img/og.jpg">
 <meta property="og:type" content="website">
 <link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.css?v={VER}">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="hdr">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Tint Man, home"><img src="assets/img/tint-man-logo.png" width="397" height="420" alt=""><span>Tint Man</span></a>
+    <a class="brand" href="index.html" aria-label="Tint Man, home"><img src="assets/img/tint-man-logo.png" width="51" height="54" alt=""><span>Tint Man</span></a>
     <button class="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">{nav}<a class="btn btn-p" href="auto.html#price">Get my price</a></nav>
   </div>
@@ -132,7 +136,7 @@ def page(fname, title, desc, body, scripts=""):
   <a class="btn btn-s" href="locations.html">Find a shop</a>
   <a class="btn btn-p" href="auto.html#price">Get my price</a>
 </div>
-{scripts}<script src="assets/site.js" defer></script>
+{scripts}<script src="assets/site.js?v={VER}" defer></script>
 </body>
 </html>
 """
