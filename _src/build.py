@@ -27,6 +27,18 @@ PRICES = dict(
 )
 
 
+def icon(name):
+    svg = (Path(__file__).parent / f"{name}.svg").read_text(encoding="utf-8")
+    path = svg[svg.index("<path"):svg.index("</svg>")]
+    return f'<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">{path}</svg>'
+
+
+SOCIAL = "".join(f'<a href="{u}" rel="noopener" aria-label="Tint Man on {n}">{icon(n.lower())}</a>' for n, u in [
+    ("YouTube", "https://www.youtube.com/channel/UCc-5ROJTFRDalu6q-zeM-1g"),
+    ("Instagram", "https://www.instagram.com/tintmanwindowtinting"),
+    ("Facebook", "https://www.facebook.com/tintmanfl")])
+
+
 def tel(p):
     return "tel:+1" + "".join(c for c in p if c.isdigit())
 
@@ -71,7 +83,7 @@ def page(fname, title, desc, body, scripts=""):
 <a class="skip" href="#main">Skip to content</a>
 <header class="hdr">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Tint Man, home">Tint Man</a>
+    <a class="brand" href="index.html" aria-label="Tint Man, home"><img src="assets/img/tint-man-logo.png" width="397" height="420" alt=""><span>Tint Man</span></a>
     <button class="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">{nav}<a class="btn btn-p" href="auto.html#price">Get my price</a></nav>
   </div>
@@ -106,10 +118,8 @@ def page(fname, title, desc, body, scripts=""):
           <li><a href="tint-laws.html">Florida tint laws</a></li>
           <li><a href="warranty.html">Warranty and film care</a></li>
           <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-          <li><a href="https://www.youtube.com/channel/UCc-5ROJTFRDalu6q-zeM-1g" rel="noopener">YouTube</a></li>
-          <li><a href="https://www.instagram.com/tintmanwindowtinting" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/tintmanfl" rel="noopener">Facebook</a></li>
         </ul>
+        <div class="social">{SOCIAL}</div>
       </div>
     </div>
     <div class="note">

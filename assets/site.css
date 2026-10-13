@@ -41,6 +41,8 @@ p{margin:0}
 .hdr{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
 .brand{font-weight:900;font-stretch:120%;font-size:1.35rem;letter-spacing:-.02em;text-decoration:none;color:var(--acc);white-space:nowrap}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{height:54px;width:auto}
 .nav{display:flex;align-items:center;gap:28px}
 .nav a:not(.btn){text-decoration:none;font-weight:600;font-size:.97rem;color:var(--text);white-space:nowrap}
 .nav a:not(.btn):hover,.nav a[aria-current="page"]{color:var(--acc)}
@@ -138,6 +140,9 @@ p{margin:0}
 .ftr a{text-decoration:none}
 .ftr a:hover{color:var(--acc)}
 .ftr img{width:120px;margin-bottom:16px}
+.social{display:flex;gap:10px;margin-top:18px}
+.social a{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid #5a5f68;border-radius:var(--r);color:var(--text);transition:color .15s ease,border-color .15s ease}
+.social a:hover{color:var(--acc);border-color:var(--acc)}
 .ftr .note{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:.88rem;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 @media (max-width:900px){.ftr-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.ftr-grid{grid-template-columns:1fr}}
